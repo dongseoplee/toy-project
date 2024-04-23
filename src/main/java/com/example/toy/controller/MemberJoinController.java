@@ -4,6 +4,10 @@ import com.example.toy.dto.MemberDTO;
 import com.example.toy.entity.MemberEntity;
 import com.example.toy.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,11 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.awt.print.Pageable;
 
 @Controller
 @RequiredArgsConstructor
-public class MemberController {
+public class MemberJoinController {
 
     private final MemberService memberService;
 
@@ -30,6 +33,7 @@ public class MemberController {
         // 회원 가입 페이지
         return "join";
     }
+
     @PostMapping("/api/user/join")
     public ResponseEntity<String> join(@ModelAttribute MemberDTO memberDTO) {
         // service 계층에서 save 메소드로 저장 (DTO -> Entity 변환)
@@ -39,10 +43,11 @@ public class MemberController {
     }
 
     // [2] 회원 목록 조회
-//    @GetMapping("/api/user/list")
-//    public Page<MemberEntity> getMemberList(Pageable pageable) {
-//
-//    }
+    @GetMapping("/member/search")
+    public String searchPage() {
+        return "search";
+    }
+
 
     // [3] 회원 정보 수정
 

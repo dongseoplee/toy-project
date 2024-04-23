@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pageable Data Display</title>
+</head>
+<body>
+<h2>User List</h2>
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>MemberID</th>
+        <th>Password</th>
+        <th>Nickname</th>
+        <th>Name</th>
+        <th>PhoneNumber</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="userData"></tbody>
+</table>
+<div id="pagination"></div>
+
+<script>
+    function fetchData(page, pageSize) {
+        fetch(`http://localhost:8080/api/user/list?page=${page}&pageSize=${pageSize}`)
+            .then(response => response.json())
+            .then(data => {
+                displayData(data.content);
+                displayPagination(data.pageable.pageNumber, data.totalPages);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function displayData(data) {
+        const tableBody = document.getElementById('userData');
+        tableBody.innerHTML = '';
+        data.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                    <td>${user.member_id}</td>
+                    <td>${user.password}</td>
+                    <td>${user.nickname}</td>
+                    <td>${user.name}</td>
+                    <td>${user.phone_number}</td>
+                    <td>${user.email}</td>
+                `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function displayPagination(currentPage, totalPages) {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = i + 1;
+            link.addEventListener('click', () => fetchData(i, 4));
+            if (i === currentPage) {
+                link.classList.add('active');
+            }
+            pagination.appendChild(link);
+        }
+    }
+
+    // Initial data fetch
+    fetchData(0, 4);
+</script>
+</body>
+</html>
