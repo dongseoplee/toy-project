@@ -45,6 +45,7 @@
                     <td>${user.name}</td>
                     <td>${user.phone_number}</td>
                     <td>${user.email}</td>
+                    <td><button onclick="editUser('${user.member_id}')">Edit</button></td>
                 `;
             tableBody.appendChild(row);
         });
@@ -64,8 +65,13 @@
             pagination.appendChild(link);
         }
     }
+    function editUser(memberId) {
+        console.log("memberId", memberId);
+        const editUrl = `http://localhost:8080/member/edit?id=${memberId}`;
 
-    // Initial data fetch
+        window.location.href = editUrl;
+    }
+
     fetchData(0, 4);
 </script>
 </body>

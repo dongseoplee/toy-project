@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+
+<span id="memberId" th:text="${memberId}"></span><br>
+
+<form id="editForm">
+
+    <label for="member_id">Member ID: </label>
+    <input type="text" id="member_id" name="member_id"><br><br>
+
+    <label for="password">Password: </label>
+    <input type="text" id="password" name="password"><br><br>
+
+    <label for="nickname">Nickname: </label>
+    <input type="text" id="nickname" name="nickname"><br><br>
+
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="phone_number">Phone Number: </label>
+    <input type="text" id="phone_number" name="phone_number"><br><br>
+
+    <label for="email">Email: </label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <button onclick="submitForm()">변경하기</button>
+</form>
+<script>
+    function submitForm() {
+        var form = document.getElementById("editForm");
+        const formData = new FormData(form);
+        console.log("formData", formData);
+        var memberId = formData.get("member_id");
+        var password = formData.get("password");
+        var nickname = formData.get("nickname");
+        var name = formData.get("name");
+        var phoneNumber = formData.get("phone_number");
+        var email = formData.get("email");
+        console.log("data", memberId + password + nickname + name + phoneNumber + email);
+
+        const url = (
+            'http://localhost:8080/api/user?' +
+                new URLSearchParams({id: String(memberId)}).toString()
+        );
+
+
+        fetch(url, {
+            method: "PUT",
+            body: formData
+        })
+            .then(response => {
+                console.log(requestBody)
+                console.log("Request successful");
+            })
+            .catch(error => {
+                console.error("Request failed", error);
+            });
+    }
+</script>
+
+</body>
+</html>
