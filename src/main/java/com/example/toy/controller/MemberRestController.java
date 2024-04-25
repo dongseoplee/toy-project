@@ -23,6 +23,27 @@ public class MemberRestController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
+    // [1] 회원 가입
+    @PostMapping("/api/user/join")
+    public ResponseEntity<String> join(@ModelAttribute MemberDTO memberDTO) {
+        // service 계층에서 save 메소드로 저장 (DTO -> Entity 변환)
+        int isIdDuplicate = memberService.checkIdDuplicate(memberDTO);
+        int isEmailDuplicate = memberService.checkEmailDuplicate(memberDTO);
+
+        // 입력한 아이디가 있다면 (개수로 판단)
+        if (isIdDuplicate >= 1 && isEmailDuplicate >= 1) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 아이디, 이메일입니다.");
+        }
+        else if (isIdDuplicate < 1 && isEmailDuplicate >= 1) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 이메일입니다.");
+        } else if (isIdDuplicate >= 1 && isEmailDuplicate < 1) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 아이디입니다.");
+        } else {
+            memberService.save(memberDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body("회원가입이 완료되었습니다.");
+        }
+    }
+
     // [2] 회원 목록 조회
     @GetMapping("/api/user/list")
     public Page<MemberEntity> getMemberList(@PageableDefault(page = 0, size = 20) @SortDefault.SortDefaults({
@@ -39,6 +60,8 @@ public class MemberRestController {
         return memberService.getMemberById(memberId);
     }
 
+
+
     // [3] 회원 정보 수정 put, post
     @PutMapping("/api/user")
     public ResponseEntity<String> updateUserInfo(@RequestParam("id") String id, MemberDTO memberDTO) {
@@ -47,7 +70,12 @@ public class MemberRestController {
         //비밀번호가 일치해야 회원정보 수정 가능
         if (memberEntity.getPassword().equals(memberDTO.getMemberPassword())) {
             memberService.updateMemberInfo(id, memberDTO);
-            return ResponseEntity.status(HttpStatus.OK).body("회원 정보 수정이 완료되었습니다.");
+            String response = "아래와 같이 회원 정보가 수정되었습니다." + "<br>" + "<br>" +
+                    "Nickname: " + memberDTO.getMemberNickname() + "<br>" +
+                    "Name: " + memberDTO.getMemberName() + "<br>" +
+                    "Phone Number: " + memberDTO.getMemberPhoneNumber() + "<br>" +
+                    "Email: " + memberDTO.getMemberEmail();
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("비밀번호가 일치하지 않습니다.");
         }
@@ -60,7 +88,12 @@ public class MemberRestController {
         //비밀번호가 일치해야 회원정보 수정 가능
         if (memberEntity.getPassword().equals(memberDTO.getMemberPassword())) {
             memberService.updateMemberInfo(id, memberDTO);
-            return ResponseEntity.status(HttpStatus.OK).body("회원 정보 수정이 완료되었습니다.");
+            String response = "아래와 같이 회원 정보가 수정되었습니다." + "<br>" + "<br>" +
+                    "Nickname: " + memberDTO.getMemberNickname() + "<br>" +
+                    "Name: " + memberDTO.getMemberName() + "<br>" +
+                    "Phone Number: " + memberDTO.getMemberPhoneNumber() + "<br>" +
+                    "Email: " + memberDTO.getMemberEmail();
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("비밀번호가 일치하지 않습니다.");
         }
