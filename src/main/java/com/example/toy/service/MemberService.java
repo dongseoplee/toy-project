@@ -5,6 +5,8 @@ import com.example.toy.entity.MemberEntity;
 import com.example.toy.repository.MemberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -40,15 +42,22 @@ public class MemberService {
         memberEntity.setName(memberDTO.getMemberName());
         memberEntity.setPhone_number(memberDTO.getMemberPhoneNumber());
         memberEntity.setEmail(memberDTO.getMemberEmail());
-
         return memberRepository.save(memberEntity);
 
     }
 
-    public boolean isDuplicate(MemberDTO memberDTO) {
-        MemberEntity memberEntity = memberRepository.findAllByMemberId(memberDTO.getMemberID());
-        if (memberEntity == null) {
-            // 중복되는 아이디 아님
+    public int checkIdDuplicate(MemberDTO memberDTO) {
+        return memberRepository.existsByMemberId(memberDTO.getMemberID());
+    }
+
+    public int checkEmailDuplicate(MemberDTO memberDTO) {
+        return memberRepository.existsByEmailId(memberDTO.getMemberEmail());
+    }
+
+    public boolean isNotNull(MemberDTO memberDTO) {
+
+        if (memberDTO.getMemberID() == null || memberDTO.getMemberPassword() == null || memberDTO.getMemberNickname() == null || memberDTO.getMemberName() == "" || memberDTO.getMemberPhoneNumber() == null || memberDTO.getMemberEmail() == null) {
+            // 1개라도 null인 경우
             return false;
         } else {
             return true;
