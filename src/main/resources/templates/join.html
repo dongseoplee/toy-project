@@ -6,11 +6,12 @@
 </head>
 <body>
 <form action="/api/user/join" method="post">
+    <!-- required 속성 적용으로 모든 내용이 채워져야 회원가입 가능   -->
     <label for="id">Id: </label>
     <input type="text" id="id" name="memberID" required><br><br>
 
     <label for="password">Password: </label>
-    <input type="password" id="password" name="memberPassword" required><br><br>
+    <input type="password" id="password" name="memberPassword" minlength="8" required><br><br>
 
     <label for="nickname">Nickname: </label>
     <input type="text" id="nickname" name="memberNickname" required><br><br>

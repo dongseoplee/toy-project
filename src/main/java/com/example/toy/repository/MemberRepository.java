@@ -14,4 +14,10 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // findAllByMemberId
     @Query(value = "SELECT * FROM toy_member WHERE MEMBER_ID = :memberId", nativeQuery = true)
     public MemberEntity findAllByMemberId(@Param("memberId") String memberId);
+
+    @Query(value = "SELECT COUNT(*) FROM toy_member WHERE MEMBER_ID = :memberId", nativeQuery = true)
+    public int existsByMemberId(@Param("memberId") String memberID);
+
+    @Query(value = "SELECT COUNT(*) FROM toy_member WHERE EMAIL = :memberEmail", nativeQuery = true)
+    public int existsByEmailId(@Param("memberEmail") String memberEmail);
 }
