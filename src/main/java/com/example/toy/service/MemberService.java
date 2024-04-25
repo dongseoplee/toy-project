@@ -21,6 +21,7 @@ public class MemberService {
 
     public MemberEntity save(MemberDTO memberDTO) {
         // DTO -> Entitiy 변환
+
         MemberEntity memberEntity = MemberEntity.convertToEntity(memberDTO);
         return memberRepository.save(memberEntity);
     }
@@ -54,15 +55,5 @@ public class MemberService {
         return memberRepository.existsByEmailId(memberDTO.getMemberEmail());
     }
 
-    public boolean isNotNull(MemberDTO memberDTO) {
-
-        if (memberDTO.getMemberID() == null || memberDTO.getMemberPassword() == null || memberDTO.getMemberNickname() == null || memberDTO.getMemberName() == "" || memberDTO.getMemberPhoneNumber() == null || memberDTO.getMemberEmail() == null) {
-            // 1개라도 null인 경우
-            return false;
-        } else {
-            return true;
-        }
-
-    }
 
 }
