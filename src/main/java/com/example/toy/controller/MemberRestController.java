@@ -5,6 +5,8 @@ import com.example.toy.entity.MemberEntity;
 import com.example.toy.repository.MemberRepository;
 import com.example.toy.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -23,10 +25,19 @@ public class MemberRestController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(MemberRestController.class);
+    public void printLog(String id, String name) {
+        LOGGER.info("id: " + id + " name: " + name);
+    }
+
     // [1] 회원 가입
     @PostMapping("/api/user/join")
     public ResponseEntity<String> join(@ModelAttribute MemberDTO memberDTO) {
         // service 계층에서 save 메소드로 저장 (DTO -> Entity 변환)
+
+        //로그 찍기
+//        printLog(memberDTO.getMemberID(), memberDTO.getMemberName());
+
         int isIdDuplicate = memberService.checkIdDuplicate(memberDTO);
         int isEmailDuplicate = memberService.checkEmailDuplicate(memberDTO);
 
