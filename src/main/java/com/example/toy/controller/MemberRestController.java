@@ -65,17 +65,17 @@ public class MemberRestController {
         return memberService.getMemberPagination(pageable);
     }
 
-    @GetMapping("/api/user")
-    public MemberEntity userInfo(@RequestParam("id") String memberId) {
-        // memberId 의 정보
-        return memberService.getMemberById(memberId);
-    }
+//    @GetMapping("/api/user")
+//    public MemberEntity userInfo(@RequestParam("id") String memberId) {
+//        // memberId 의 정보
+//        return memberService.getMemberById(memberId);
+//    }
 
 
 
     // [3] 회원 정보 수정 put, post
     @PutMapping("/api/user")
-    public ResponseEntity<String> updateUserInfo(@RequestParam("id") String id, MemberDTO memberDTO) {
+    public ResponseEntity<String> updateUserInfoPut(@RequestParam("id") String id, MemberDTO memberDTO) {
         Optional<MemberEntity> optionalMemberEntity = Optional.ofNullable(memberRepository.findAllByMemberId(id));
         MemberEntity memberEntity = optionalMemberEntity.get();
         //비밀번호가 일치해야 회원정보 수정 가능
@@ -93,7 +93,7 @@ public class MemberRestController {
     }
 
     @PostMapping("api/user")
-    public ResponseEntity<String> updateUserInfo2(@RequestParam("id") String id, MemberDTO memberDTO) {
+    public ResponseEntity<String> updateUserInfoPost(@RequestParam("id") String id, MemberDTO memberDTO) {
         Optional<MemberEntity> optionalMemberEntity = Optional.ofNullable(memberRepository.findAllByMemberId(id));
         MemberEntity memberEntity = optionalMemberEntity.get();
         //비밀번호가 일치해야 회원정보 수정 가능
