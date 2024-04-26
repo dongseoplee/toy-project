@@ -3,6 +3,8 @@ package com.example.toy.controller;
 import com.example.toy.dto.MemberDTO;
 import com.example.toy.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     private final MemberService memberService;
+
+    private final Logger LOGGER = LoggerFactory.getLogger(MemberController.class);
 
     @GetMapping("/")
     public String index() {
