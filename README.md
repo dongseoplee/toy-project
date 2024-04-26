@@ -14,6 +14,7 @@
 - "수정" 버튼을 클릭 시 "/member/edit?id=${memberId}"으로 이동합니다.
 #### 4. http://localhost:8080/member/edit?id=example
 - form 데이터를 "/api/user?id=example"에 post 방식으로 회원 정보를 전달해 수정합니다.
+- postman 사용시 put 방식으로도 회원 정보 수정이 가능합니다.
 
 ## Description & Exception
 1. 회원가입
