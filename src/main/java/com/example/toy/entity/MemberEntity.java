@@ -20,6 +20,8 @@ public class MemberEntity {
     private String phone_number;
     private String email;
 
+
+
     public static MemberEntity convertToEntity (MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMember_id(memberDTO.getMemberID());
