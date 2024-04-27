@@ -5,16 +5,23 @@
 #### 1. http://localhost:8080/
 - index.html을 불러옵니다.
 - index.html에서 1. 회원 가입 ("/join"), 2. 회원 목록 조회 및 수정 ("/member/search")으로 접속할 수 있습니다.
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/7b464113-68f9-4a7b-8566-42a3e88a091b" width = 600 height = 300/>
+
 #### 2. http://localhost:8080/join
 - join.html을 불러옵니다.
 - join.html에서 form 데이터를 "/api/user/join"에 post 방식으로 회원 가입 데이터를 전달합니다.
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/c5bdb754-1b73-4d02-8eee-0c0e572ff4ff" width = 600 height = 300/>
+
 #### 3. http://localhost:8080/member/search
 - search.html을 불러옵니다.
 - "/api/user/list?page=${page}&pageSize=${pageSize}"으로 데이터를 불러와 페이지별로 회원 데이터를 나타냅니다.
 - "수정" 버튼을 클릭 시 "/member/edit?id=${memberId}"으로 이동합니다.
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/703db9a1-1883-4028-98c6-f72722e3e99c" width = 600 height = 300/>
+
 #### 4. http://localhost:8080/member/edit?id=example
 - form 데이터를 "/api/user?id=example"에 post 방식으로 회원 정보를 전달해 수정합니다.
 - postman 사용시 put 방식으로도 회원 정보 수정이 가능합니다.
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/f0999141-a126-453d-b28b-1d3e628beb9e" width = 600 height = 300/>
 
 ## Description & Exception
 1. 회원가입
