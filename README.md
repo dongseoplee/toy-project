@@ -30,7 +30,26 @@
 - 회원 등록순, 이름순으로 한 페이지당 20개 데이터씩 보여집니다.
 3. 회원 수정
 - 비밀번호가 일치해야 회원 정보가 수정되는 로직을 구현했습니다.
-  
+
+## Open API
+- Swagger를 적용시켜 "http://localhost:8080/swagger-ui/index.html"에 접속 시, API 명세를 확인할 수 있습니다.
+
+#### Postman
+- 1-1. 회원가입 성공 (201)
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/c4315ba8-f9a6-4a59-a9ef-1f45bad5a38c" width = 600 height = 450/>
+
+- 1-2. 회원가입 실패 (409)
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/c930525f-8050-40fa-b036-411d83b663ee" width = 600 height = 450/>
+
+- 2. 회원 목록 조회 (페이지네이션)
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/d3d2db5b-7eee-4a0e-b5a5-0507faabc061" width = 600 height = 450/>
+
+- 3-1. 회원 수정 (POST)
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/51294b38-72dd-474f-bd2d-8ceb71a2a158" width = 600 height = 450/>
+
+- 3-2. 회원 수정 (PUT)
+<img src="https://github.com/dongseoplee/toy-project/assets/76763417/65aa8027-bd04-4520-9a7d-d4037f09a83c" width = 600 height = 450/>
+
 ## Test
 - JUnit, Mockito를 활용해 테스트 코드를 작성했습니다. ("src/test")
 
@@ -40,8 +59,7 @@
 ## GitHub
 - 개인 Branch를 생성해 Pull request로 main Branch에 merge 했습니다.
 
-## Open API
-- Swagger를 적용시켜 "http://localhost:8080/swagger-ui/index.html"에 접속 시, API 명세를 확인할 수 있습니다.
+
 
 ## Tech Stack
 - Framework: Spring Boot (2.6.2), jdk 1.8 (Java 8)
