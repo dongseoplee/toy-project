@@ -25,7 +25,7 @@
 
 ## Description & Exception
 1. 회원가입
-- 아이디 또는 이메일이 존재한다면 사용할 수 없는 로직을 구현했습니다.
+- 아이디 또는 이메일이 이미 존재한다면 중복으로 사용할 수 없는 로직을 구현했습니다.
 2. 회원 목록 조회
 - 회원 등록순, 이름순으로 한 페이지당 20개 데이터씩 보여집니다.
 3. 회원 수정
@@ -65,13 +65,11 @@
 ## GitHub
 - 개인 Branch를 생성해 Pull request로 main Branch에 merge 했습니다.
 
-
-
 ## Tech Stack
 - Framework: Spring Boot (2.6.2), jdk 1.8 (Java 8)
 - Database: AWS RDS (MySQL)
 - ORM: Spring Data JPA
-- Tool: postman, IntelliJ
+- Tool: Postman, IntelliJ
 - Log: logback
 - API: RESTful API, Swagger
 - VCS: GitHub (Pull requests)
