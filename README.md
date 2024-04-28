@@ -33,6 +33,32 @@
 
 ## Open API
 - Swagger를 적용시켜 "http://localhost:8080/swagger-ui/index.html"에 접속 시, API 명세를 확인할 수 있습니다.
+- 
+#### 접속 페이지 URL
+1. GET: http://localhost:8080/
+- index.html을 반환합니다.
+
+2. GET: http://localhost:8080/join
+- join.html을 반환합니다.
+
+3. GET: http://localhost:8080/member/search
+- search.html을 반환합니다.
+
+4. GET: http://localhost:8080/member/edit?id=example
+- edit.html을 반환합니다.
+
+#### 기능별 URL
+1. 회원 가입
+- POST: http://localhost:8080/api/user/join
+
+성공: 201 (Created), 실패: 409 (Conflict)
+
+2. 회원 목록 조회
+- GET: http://localhost:8080/api/user/list?page=0&pageSize=10
+
+3. 회원 정보 수정
+- PUT: http://localhost:8080/api/user?id=example
+- POST: http://localhost:8080/api/user?id=example
 
 #### Postman
 - 1-1. 회원가입 성공 (201)
