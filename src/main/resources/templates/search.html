@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pageable Data Display</title>
+    <title>Search</title>
 </head>
 <body>
 <h2>User List</h2>
+<a href="/">홈으로 돌아가기</a>
 <table id="userTable">
     <thead>
     <tr>
@@ -58,7 +59,7 @@
             const link = document.createElement('a');
             link.href = '#';
             link.textContent = i + 1 + "페이지        ";
-            link.addEventListener('click', () => fetchData(i, 4));
+            link.addEventListener('click', () => fetchData(i, 10));
             if (i === currentPage) {
                 link.classList.add('active');
             }
@@ -72,7 +73,8 @@
         window.location.href = editUrl;
     }
 
-    fetchData(0, 4);
+    // 페이지당 데이터 10개로 설정
+    fetchData(0, 10);
 </script>
 </body>
 </html>

@@ -20,6 +20,7 @@ public class MemberController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(MemberController.class);
 
+    // [0] 기본 페이지
     @GetMapping("/")
     public String index() {
         return "index";
