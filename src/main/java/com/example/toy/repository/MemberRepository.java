@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
-    // findAllByMemberId
     @Query(value = "SELECT * FROM toy_member WHERE MEMBER_ID = :memberId", nativeQuery = true)
     public MemberEntity findAllByMemberId(@Param("memberId") String memberId);
 

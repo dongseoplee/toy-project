@@ -57,7 +57,7 @@ public class MemberRestControllerTest {
         mockMvc
                 .perform(post("/api/user/join").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().string("회원가입이 완료되었습니다."))
+                .andExpect(content().string("회원가입이 완료되었습니다. <a href=\"/\">홈으로 돌아가기</a>"))
                 .andDo(print());
 
 
@@ -84,7 +84,7 @@ public class MemberRestControllerTest {
         mockMvc
                 .perform(post("/api/user/join").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isConflict())
-                .andExpect(content().string("이미 존재하는 아이디입니다."))
+                .andExpect(content().string("이미 존재하는 아이디입니다. <a href=\"/\">홈으로 돌아가기</a>"))
                 .andDo(print());
     }
     @Test
@@ -108,7 +108,7 @@ public class MemberRestControllerTest {
         mockMvc
                 .perform(post("/api/user/join").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isConflict())
-                .andExpect(content().string("이미 존재하는 이메일입니다."))
+                .andExpect(content().string("이미 존재하는 이메일입니다. <a href=\"/\">홈으로 돌아가기</a>"))
                 .andDo(print());
     }
 
@@ -133,7 +133,7 @@ public class MemberRestControllerTest {
         mockMvc
                 .perform(post("/api/user/join").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isConflict())
-                .andExpect(content().string("이미 존재하는 아이디, 이메일입니다."))
+                .andExpect(content().string("이미 존재하는 아이디, 이메일입니다. <a href=\"/\">홈으로 돌아가기</a>"))
                 .andDo(print());
     }
 
@@ -151,6 +151,7 @@ public class MemberRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").isArray());
     }
+
 
 
 }
