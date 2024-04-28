@@ -50,6 +50,12 @@
 - 3-2. 회원 수정 (PUT)
 <img src="https://github.com/dongseoplee/toy-project/assets/76763417/65aa8027-bd04-4520-9a7d-d4037f09a83c" width = 600 height = 450/>
 
+## How To Start
+1. `git clone https://github.com/dongseoplee/toy-project.git`
+2. build.gradle 파일을 IntelliJ로 실행합니다.
+3. jdk 1.8 (Java8)로 설정한뒤 ToyApplication.java를 실행시킵니다.
+4. http://localhost:8080 주소로 접속합니다.
+
 ## Test
 - JUnit, Mockito를 활용해 테스트 코드를 작성했습니다. ("src/test")
 
@@ -65,7 +71,7 @@
 - Framework: Spring Boot (2.6.2), jdk 1.8 (Java 8)
 - Database: AWS RDS (MySQL)
 - ORM: Spring Data JPA
-- Tool: postman, Intellij
+- Tool: postman, IntelliJ
 - Log: logback
 - API: RESTful API, Swagger
 - VCS: GitHub (Pull requests)
