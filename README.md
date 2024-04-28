@@ -67,7 +67,7 @@
 - 1-2. 회원가입 실패 (409)
 <img src="https://github.com/dongseoplee/toy-project/assets/76763417/c930525f-8050-40fa-b036-411d83b663ee" width = 600 height = 450/>
 
-- 2. 회원 목록 조회 (페이지네이션)
+- 2-1. 회원 목록 조회 (페이지네이션)
 <img src="https://github.com/dongseoplee/toy-project/assets/76763417/d3d2db5b-7eee-4a0e-b5a5-0507faabc061" width = 600 height = 450/>
 
 - 3-1. 회원 수정 (POST)
@@ -89,7 +89,7 @@
 - logback을 활용해 로그를 파악하였으며, 로그 정보는 logs 폴더 안에 저장됩니다.
 
 ## GitHub
-- 개인 Branch를 생성해 Pull request로 main Branch에 merge 했습니다.
+- 개인 Branch를 생성해 Pull request로 main Branch에 merge 했습니다. <a href = "https://github.com/dongseoplee/toy-project/pulls?q=is%3Apr+is%3Aclosed"> Pull requests</a>
 
 ## Tech Stack
 - Framework: Spring Boot (2.6.2), jdk 1.8 (Java 8)
